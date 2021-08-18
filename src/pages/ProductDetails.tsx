@@ -46,11 +46,11 @@ const ProductDetails = (props:any) => {
   <div className="section-content section-content-p30">
     <div className="container-fluid">
       <div className="row">
-        <div>
+        <div >
           <img src={`../${product.image_url}`} className="img-responsive" width="200px" />
           <h3>{product.name}</h3>
           <div className="price">${product.unit_price}</div>
-          <a href="shopping-detail.html" onClick={()=>addToCart(product.id)} className="primary-btn">Add to cart</a>
+          <a  onClick={()=> addToCart(product.id)} className="primary-btn">Add to cart</a>
           <h4 className="mt-3 mb-2">Product Description</h4>
           <p>{product.description}
           </p>
