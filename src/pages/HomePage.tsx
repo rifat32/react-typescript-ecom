@@ -2,7 +2,6 @@ import React,{useEffect,useState,useContext} from 'react'
 import axios from 'axios';
 
 import { Products } from '../interfaces/Products';
-
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { backEnd } from '../utils/backEnd';

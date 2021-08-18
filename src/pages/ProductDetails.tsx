@@ -1,14 +1,16 @@
 import axios from 'axios'
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { Products } from '../interfaces/Products';
 import { backEnd } from '../utils/backEnd'
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Link } from 'react-router-dom';
+import { AppContext } from '../context';
 
 const ProductDetails = (props:any) => {
   const [loading,setLoading] = useState(false);
   const [product,setProduct] = useState<(Products | null)>(null);
+  const {addToCart} = useContext(AppContext)
     useEffect(()=>{
  fetchProduct()
     },[props.match.params.slug])
@@ -48,7 +50,7 @@ const ProductDetails = (props:any) => {
           <img src={`../${product.image_url}`} className="img-responsive" width="200px" />
           <h3>{product.name}</h3>
           <div className="price">${product.unit_price}</div>
-          <a href="shopping-detail.html" className="primary-btn">Add to cart</a>
+          <a href="shopping-detail.html" onClick={()=>addToCart(product.id)} className="primary-btn">Add to cart</a>
           <h4 className="mt-3 mb-2">Product Description</h4>
           <p>{product.description}
           </p>
