@@ -14,22 +14,11 @@ const MenuSideBar :React.FC  = () => {
   
  
   useEffect(() => {
-    fetchCategories()
+  
   },[])
   
 
-  const fetchCategories = ():void => {
 
-    axios.get(`${backEnd}/categories/`)
-    .then(response => {
-          
-   
-        setCategories(response.data.categories)
-    })
-    .catch(err => {
-        console.log(err.response)
-    })
-}
     return (
      <aside className="menu-sidebar d-none d-lg-block">
   <div className="logo">
@@ -40,11 +29,20 @@ const MenuSideBar :React.FC  = () => {
   <div className="menu-sidebar-content js-scrollbar1">
     <nav className="navbar-sidebar">
       <ul className="list-unstyled navbar-list">
-        {
-          categories?categories.map((el)=> (  <li key={el.id}>
-            <Link to={`/category/${el.slug}`} className={location.pathname.includes(`category/${el.slug}`)?"text-primary":""}>{el.name}</Link>
-          </li>)):null
-        }
+       
+        <li>
+        <Link to={`/category/mouse_pads`} className={location.pathname.includes("category/mouse_pads")?"text-primary":""}>Mouse Pads</Link>
+        </li>
+        <li>
+        <Link to={`/category/luggage_tags`} className={location.pathname.includes("category/luggage_tags")?"text-primary":""}>Luggage Tags</Link>
+        </li>
+        <li>
+        <Link to={`/category/coffee_mugs`} className={location.pathname.includes("category/coffee_mugs")?"text-primary":""}>Coffee Mugs</Link>
+        </li>
+        <li>
+        <Link to={`/category/books`} className={location.pathname.includes("category/books")?"text-primary":""}>Books</Link>
+        </li>
+       
       </ul>
     </nav>
   </div>
